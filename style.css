@@ -1,0 +1,684 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+:root {
+    --black: #050505;
+    --panel: rgba(17, 17, 17, 0.91);
+    --gold: #ffd21f;
+    --gold-light: #fff1a0;
+    --gold-dark: #997500;
+    --muted: #85816e;
+    --border: rgba(255, 210, 31, 0.2);
+    --white: #f7f4e9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ambient {
+    position: fixed;
+    width: 370px;
+    height: 370px;
+    border-radius: 50%;
+    filter: blur(125px);
+    opacity: 0.09;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.ambient-one {
+    background: #ffcc00;
+    top: -170px;
+    right: -80px;
+}
+
+.ambient-two {
+    background: #ff9500;
+    bottom: -230px;
+    left: -140px;
+}
+
+.studio {
+    width: min(1120px, 92%);
+    margin: 0 auto;
+    padding: 25px 0 16px;
+}
+
+.topbar {
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.brand-mark {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    color: var(--gold);
+    font-size: 30px;
+    border: 1px solid var(--gold);
+    box-shadow: inset 0 0 16px #ffd21f12, 0 0 18px #ffd21f10;
+}
+
+.brand-name {
+    font: 700 19px 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+.brand-name span {
+    color: var(--gold);
+}
+
+.brand-subtitle {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 6px;
+}
+
+.live-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font: 11px 'Orbitron', sans-serif;
+    color: var(--gold-light);
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--gold);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: 0.35;
+    }
+}
+
+.intro {
+    padding: 42px 0 27px;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.eyebrow-line {
+    width: 28px;
+    height: 2px;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+}
+
+h1 {
+    font: 800 clamp(28px, 5vw, 53px)/1.25 'Orbitron', sans-serif;
+    letter-spacing: -1px;
+    margin-top: 21px;
+}
+
+h1 span {
+    color: var(--gold);
+    text-shadow: 0 0 22px #ffd21f22;
+}
+
+.intro-text {
+    color: #a7a294;
+    font-size: 17px;
+    max-width: 650px;
+    line-height: 1.65;
+    margin-top: 16px;
+}
+
+.studio-panel,
+.instrument-panel,
+.volume-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    box-shadow: 0 16px 50px #0006;
+}
+
+.studio-panel {
+    padding: 24px;
+}
+
+.panel-top,
+.instrument-heading,
+.control-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.tiny-label {
+    color: var(--gold);
+    font: 10px 'Orbitron', sans-serif;
+    letter-spacing: 1.6px;
+    margin-bottom: 9px;
+}
+
+h2 {
+    font: 600 20px 'Orbitron', sans-serif;
+}
+
+.sound-indicator {
+    height: 32px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.sound-indicator span {
+    width: 4px;
+    height: 7px;
+    background: #65551d;
+    border-radius: 5px;
+}
+
+.sound-indicator.playing span {
+    background: var(--gold);
+    box-shadow: 0 0 8px #ffd21f70;
+    animation: bars 0.5s ease-in-out infinite alternate;
+}
+
+.sound-indicator.playing span:nth-child(2n) {
+    animation-delay: 0.2s;
+}
+
+.sound-indicator.playing span:nth-child(3n) {
+    animation-delay: 0.35s;
+}
+
+@keyframes bars {
+    from {
+        height: 5px;
+    }
+
+    to {
+        height: 30px;
+    }
+}
+
+.mode-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.mode-card {
+    min-height: 122px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 7px;
+    padding: 15px;
+    border: 1px solid #36332a;
+    background: #0c0c0a;
+    color: var(--white);
+    text-align: left;
+    cursor: pointer;
+    transition: 0.22s ease;
+}
+
+.mode-card:hover {
+    border-color: #9b811b;
+    transform: translateY(-2px);
+    background: #15130a;
+}
+
+.mode-card.selected {
+    border-color: var(--gold);
+    background: linear-gradient(140deg, #302707, #100f08 80%);
+    box-shadow: inset 0 0 20px #ffd21f0d, 0 0 15px #ffd21f0b;
+}
+
+.mode-icon {
+    font-size: 25px;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.mode-title {
+    font: 700 11px 'Orbitron', sans-serif;
+    color: var(--gold-light);
+}
+
+.mode-desc {
+    color: #898578;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.instrument-panel {
+    padding: 24px;
+    margin-top: 20px;
+}
+
+.playing-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 31px;
+    padding: 6px 10px;
+    color: var(--gold);
+    font: 10px 'Orbitron', sans-serif;
+    border: 1px solid var(--border);
+    background: #0d0c07;
+    text-align: center;
+}
+
+.note-dot {
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+}
+
+.keyboard-help {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 18px 0 23px;
+    color: #a6a091;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+.help-icon {
+    color: var(--gold);
+    font-size: 23px;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px;
+    border: 1px solid #2f2917;
+    background:
+        radial-gradient(ellipse at center, #1b170a 0%, #080807 75%);
+    box-shadow: inset 0 0 40px #000a;
+}
+
+.key-row {
+    display: flex;
+    justify-content: center;
+    gap: clamp(3px, 0.65vw, 8px);
+}
+
+.key {
+    flex: 1;
+    min-width: 0;
+    max-width: 75px;
+    height: clamp(52px, 7vw, 73px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    color: #e9e4d4;
+    background: linear-gradient(145deg, #20201b, #0a0a09);
+    border: 1px solid #4a4330;
+    border-bottom: 4px solid #332b17;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.08s, transform 0.08s, border-color 0.08s;
+}
+
+.key::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 1px;
+    background: #fff2;
+}
+
+.key .key-letter {
+    font: 700 clamp(13px, 1.8vw, 18px) 'Orbitron', sans-serif;
+}
+
+.key .key-note {
+    color: #857d64;
+    font-size: 10px;
+}
+
+.key:hover {
+    border-color: #a78a20;
+    background: linear-gradient(145deg, #302910, #141107);
+}
+
+.key:active,
+.key.pressed {
+    transform: translateY(3px);
+    border-color: var(--gold);
+    border-bottom-width: 1px;
+    background: linear-gradient(145deg, #6e5610, #332606);
+    color: #fff9cb;
+    box-shadow: 0 0 15px #ffd21f45, inset 0 0 12px #ffd21f25;
+}
+
+.key.pressed .key-note {
+    color: var(--gold-light);
+}
+
+.keyboard-bottom {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 11px;
+    margin-top: 17px;
+    color: #746c52;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.bottom-controls {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.volume-card {
+    padding: 19px 22px;
+}
+
+h3 {
+    font: 600 17px 'Orbitron', sans-serif;
+}
+
+.volume-number {
+    color: var(--gold);
+    font: 600 20px 'Orbitron', sans-serif;
+}
+
+.volume-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 17px;
+}
+
+.volume-icon {
+    color: var(--gold);
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 4px;
+    appearance: none;
+    background: #494027;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid #28210a;
+    box-shadow: 0 0 12px #ffd21f70;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid #28210a;
+    box-shadow: 0 0 12px #ffd21f70;
+}
+
+.stop-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 200px;
+    padding: 20px;
+    border: 1px solid #5c261b;
+    background: #170b08;
+    color: #ffb7a8;
+    font: 600 11px 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.stop-button:hover {
+    background: #32120d;
+    border-color: #bd543d;
+}
+
+.stop-button span {
+    color: #ff7155;
+    font-size: 17px;
+}
+
+.message {
+    min-height: 27px;
+    margin-top: 16px;
+    color: #928a73;
+    text-align: center;
+    font-size: 14px;
+}
+
+.message.active-message {
+    color: var(--gold-light);
+}
+
+.author {
+    margin-top: 15px;
+    padding: 12px 5px 4px;
+    border-top: 1px solid #2c2511;
+    text-align: center;
+    color: #82702e;
+    font: 9px 'Orbitron', sans-serif;
+    letter-spacing: 3px;
+    opacity: 0.75;
+}
+
+@media (max-width: 850px) {
+    .mode-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .key-row {
+        gap: 4px;
+    }
+
+    .keyboard {
+        padding: 12px 7px;
+    }
+
+    .bottom-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .stop-button {
+        min-height: 55px;
+    }
+}
+
+@media (max-width: 520px) {
+    .studio {
+        width: 94%;
+        padding-top: 16px;
+    }
+
+    .brand-mark {
+        width: 37px;
+        height: 37px;
+    }
+
+    .brand-name {
+        font-size: 14px;
+    }
+
+    .brand-subtitle {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .live-status {
+        font-size: 8px;
+        gap: 5px;
+    }
+
+    .intro {
+        padding-top: 30px;
+    }
+
+    h1 {
+        font-size: clamp(25px, 6vw, 34px);
+    }
+
+    .eyebrow {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .intro-text {
+        font-size: 15px;
+    }
+
+    .studio-panel,
+    .instrument-panel {
+        padding: 15px 10px;
+    }
+
+    .mode-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .mode-card {
+        min-height: 105px;
+        padding: 11px;
+    }
+
+    .mode-grid .mode-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .mode-title {
+        font-size: 10px;
+    }
+
+    .mode-desc {
+        font-size: 11px;
+    }
+
+    .instrument-heading {
+        align-items: flex-start;
+    }
+
+    .instrument-heading h2 {
+        font-size: 16px;
+    }
+
+    .playing-note {
+        font-size: 8px;
+        max-width: 130px;
+        overflow: hidden;
+    }
+
+    .keyboard-help {
+        font-size: 13px;
+    }
+
+    .key {
+        height: 44px;
+        border-bottom-width: 3px;
+        border-radius: 3px;
+        gap: 2px;
+    }
+
+    .key .key-letter {
+        font-size: 11px;
+    }
+
+    .key .key-note {
+        font-size: 8px;
+    }
+
+    .keyboard {
+        padding: 10px 5px;
+        gap: 6px;
+    }
+
+    .keyboard-bottom {
+        gap: 6px;
+        font-size: 8px;
+    }
+
+    .volume-card {
+        padding: 16px 13px;
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+
+    .volume-number {
+        font-size: 16px;
+    }
+
+    .author {
+        letter-spacing: 1px;
+        font-size: 8px;
+    }
+}
